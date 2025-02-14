@@ -126,7 +126,12 @@ console.log("=================================");
 //Atividade 5.3
 function calcularMedia(nota1, nota2, nota3) {
     let media = (nota1 + nota2 + nota3) / 3;
-    return media >= 7 ? "Aprovado" : "Reprovado";
+    if(media >=7){
+        return "Aprovado!";
+    }
+    else{
+        return "Reprovado!";
+    }
 }
 let nota1 = Number(prompt('Digite a primeria nota: '))
 let nota2 = Number(prompt('Digite a segunda nota: '))
