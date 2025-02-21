@@ -81,3 +81,6 @@ console.log(menor);
 let soma = valores.reduce((x,y)=>(x+y),0);
 
 //sort
+let z = [2,6,3,8,1,7,4,9,5];
+z.sort();
+console.log(z);
