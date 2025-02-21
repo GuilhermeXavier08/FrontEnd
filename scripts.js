@@ -3,7 +3,6 @@ const prompt = require("prompt-sync")();
 console.log("Ambiente configurado com sucesso!");
 console.log('=================================');
 
-
 //Atividade 2.1
 nome = "Guilherme";
 idade = 16;
