@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Comic Sans MS;
+}
+
+.title {
+    height: 150px;
+    background-color: rgb(222, 239, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+    margin-top: 25px;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 75px;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 25px;
+    width: 600px;
+}
+
+button {
+    width: 130px;
+    height: 60px;
+    border: 1px solid black;
+    background-color: aliceblue;
+    border-radius: 15px;
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.aaa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.imagens {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 800px;
+    height: 20vh;
+    margin-bottom: 50px;
+}
+.voce{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+}
+.maquina{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+}
+.img{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img img{
+    width: 40%;
+}
+#naosei{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 600px;
+    flex-direction: row;
+}
+#naosei p{
+    font-size: 20px;
+    font-weight: bold;
+}
+@media (max-width: 800px){
+    .title {
+    height: 150px;
+    background-color: rgb(222, 239, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+    margin-top: 25px;
+    text-decoration: none;
+}
+.imagens {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 600px;
+    height: 20vh;
+    margin-bottom: 50px;
+}
+}
+@media (max-width: 600px){
+    .title {
+    height: 150px;
+    background-color: rgb(222, 239, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+    margin-top: 25px;
+    text-decoration: none;
+}
+.imagens {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    height: 20vh;
+    margin-bottom: 50px;
+}
+.voce{
+    width: 200px;
+}
+.maquina{
+    width: 200px;
+}
+.voce h1{
+    font-size: 20px;
+}
+.maquina h1{
+    font-size: 20px;
+}
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 25px;
+    width: 400px;
+}
+#naosei{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    flex-direction: row;
+}
+.img img{
+    width: 60%;
+}
+}
+@media (max-width: 500px){
+    .title {
+    height: 150px;
+    background-color: rgb(222, 239, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px black;
+    margin-top: 25px;
+    text-decoration: none;
+}
+.imagens {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    height: 20vh;
+    margin-bottom: 50px;
+}
+.voce{
+    width: 200px;
+}
+.maquina{
+    width: 200px;
+}
+.voce h1{
+    font-size: 20px;
+}
+.maquina h1{
+    font-size: 20px;
+}
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 25px;
+    width: 400px;
+}
+#naosei{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    flex-direction: row;
+}
+.img img{
+    width: 60%;
+}
+}
