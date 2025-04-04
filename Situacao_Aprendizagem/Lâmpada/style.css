@@ -1,97 +1,106 @@
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Comic Sans MS;
+  margin: 0; /*Define a margem da página para 0*/
+  display: flex;/*Torna o display da página flex*/
+  justify-content: center;/*Alinha os itens horizontalmente*/
+  align-items: center;/*Alinha os itens verticalmente*/
+  font-family: Comic Sans MS;/*Define a fonte padrão da página*/
 }
 
 .title {
-  height: 150px;
-  background-color: rgb(222, 239, 253);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 700px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px black;
-  margin-top: 25px;
-  text-decoration: none;
+  height: 150px;/*Define a altura da div title*/
+  background-color: rgb(222, 239, 253);/*Define a cor do background*/
+  display: flex;/*Torna o display da página flex*/
+  justify-content: center;/*Alinha os itens horizontalmente*/
+  align-items: center;/*Alinha os itens verticalmente*/
+  width: 700px;/*Define a largura da div title*/
+  border-radius: 10px;/*Arredonda as bordas*/
+  box-shadow: 1px 1px 5px black;/*Adiciona sombra à div title*/
+  margin-top: 25px;/*Define a margem superior*/
+  text-decoration: none;/*Remove a decoração do texto*/
 }
+
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 45px;
+  display: flex;/*Torna o display da página flex*/
+  flex-direction: column;/*Organiza os itens em coluna*/
+  justify-content: center;/*Alinha os itens horizontalmente*/
+  align-items: center;/*Alinha os itens verticalmente*/
+  margin-top: 45px;/*Define a margem superior*/
 }
+
 .container img {
-  width: 50%;
+  width: 50%;/*Define a largura da imagem*/
 }
+
 .botoes {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 75px;
-  width: 600px;
+  display: flex;/*Torna o display da página flex*/
+  align-items: center;/*Alinha os itens verticalmente*/
+  justify-content: space-around;/*Distribui os botões de maneira uniforme*/
+  margin-top: 75px;/*Define a margem superior*/
+  width: 600px;/*Define a largura do container dos botões*/
 }
+
 button {
-  width: 130px;
-  height: 60px;
-  border: 1px solid black;
-  background-color: aliceblue;
-  border-radius: 15px;
-  font-family: Comic Sans MS;
-  font-weight: bold;
+  width: 130px;/*Define a largura do botão*/
+  height: 60px;/*Define a altura do botão*/
+  border: 1px solid black;/*Define a borda do botão*/
+  background-color: aliceblue;/*Define a cor de fundo*/
+  border-radius: 15px;/*Arredonda as bordas*/
+  font-family: Comic Sans MS;/*Define a fonte do botão*/
+  font-weight: bold;/*Define a espessura da fonte*/
 }
+
 .aaa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: flex;/*Torna o display da página flex*/
+  align-items: center;/*Alinha os itens verticalmente*/
+  justify-content: center;/*Alinha os itens horizontalmente*/
+  flex-direction: column;/*Organiza os itens em coluna*/
 }
+
 h1 {
-  color: black;
+  color: black;/*Define a cor do texto*/
 }
+
 a {
-  text-decoration: none;
+  text-decoration: none;/*Remove a decoração do texto*/
 }
+
 @media (max-width: 715px) {
   .title {
-    height: 150px;
-    background-color: rgb(222, 239, 253);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px black;
-    margin-top: 25px;
-    text-decoration: none;
+    height: 150px;/*Define a altura da div title*/
+    background-color: rgb(222, 239, 253);/*Define a cor do background*/
+    display: flex;/*Torna o display da página flex*/
+    justify-content: center;/*Alinha os itens horizontalmente*/
+    align-items: center;/*Alinha os itens verticalmente*/
+    width: 600px;/*Define a largura da div title*/
+    border-radius: 10px;/*Arredonda as bordas*/
+    box-shadow: 1px 1px 5px black;/*Adiciona sombra à div title*/
+    margin-top: 25px;/*Define a margem superior*/
+    text-decoration: none;/*Remove a decoração do texto*/
   }
 }
+
 @media (max-width: 600px) {
   .title {
-    height: 150px;
-    background-color: rgb(222, 239, 253);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px black;
-    margin-top: 25px;
-    text-decoration: none;
+    height: 150px;/*Define a altura da div title*/
+    background-color: rgb(222, 239, 253);/*Define a cor do background*/
+    display: flex;/*Torna o display da página flex*/
+    justify-content: center;/*Alinha os itens horizontalmente*/
+    align-items: center;/*Alinha os itens verticalmente*/
+    width: 400px;/*Define a largura da div title*/
+    border-radius: 10px;/*Arredonda as bordas*/
+    box-shadow: 1px 1px 5px black;/*Adiciona sombra à div title*/
+    margin-top: 25px;/*Define a margem superior*/
+    text-decoration: none;/*Remove a decoração do texto*/
   }
+  
   .botoes {
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
-  display: grid;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 75px;
-  width: 300px;
-
-}
+    grid-template-columns: repeat(2, 1fr);/*Cria um layout de grade com 2 colunas*/
+    grid-template-rows: repeat(2, 1fr);/*Cria um layout de grade com 2 linhas*/
+    gap: 10px;/*Define o espaçamento entre os itens*/
+    display: grid;/*Torna o display da página grid*/
+    align-items: center;/*Alinha os itens verticalmente*/
+    justify-content: space-around;/*Distribui os botões de maneira uniforme*/
+    margin-top: 75px;/*Define a margem superior*/
+    width: 300px;/*Define a largura do container dos botões*/
+  }
 }
