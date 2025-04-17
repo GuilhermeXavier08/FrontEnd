@@ -1,18 +1,21 @@
 body{
-    margin: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
     background-color: aliceblue;
 }
+
 h1{
     text-align: center;
 }
+
 section{
     background-color: white;
     padding: 15px;
     margin: 15px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
 button{
     background-color: lightgreen;
     color: white;
@@ -22,13 +25,16 @@ button{
     cursor: pointer;
     border-radius: 5px;
 }
+
 button:hover{
     background-color: green;
 }
+
 ul{
     list-style: none;
     padding: 5px;
 }
+
 li{
     background-color: #ddd;
     padding: 5px;

@@ -1,62 +1,161 @@
-//criar classes
+//criar as classes
 
-class Clientes {
-    constructor(id, nome) {
-        this.id = id
-        this.nome = nome
-    }
+class Cliente {
+  // model
+  #nome;
+  constructor(id, nome) {
+    this.id = id;
+    this.#nome = nome;
+  }
+  getNome() {
+    return this.#nome;
+  }
 }
 
-class Produto{
-    constructor(id, nome, preco){
-        this.nome = nome
-        this.id = id
-        this.preco = preco
-    }
+class Produto {
+  //model
+  constructor(id, nome, preco) {
+    this.id = id;
+    this.nome = nome;
+    this.preco = preco;
+  }
 }
 
 class Pedido {
-  constructor(id, cliente, itens, descontos) {
+  //model
+  constructor(id, cliente, itens, desconto) {
     this.id = id;
     this.cliente = cliente;
     this.itens = itens;
-    this.descontos = descontos;
+    this.desconto = desconto;
     this.total = this.calcularTotal();
   }
-    calcularTotal(){
-        let total = this.itens.reduce((acc,item)=>
-        acc+(item.produto.preco * item.quantidade),0);
-        return total - (total*(this.desconto/100));
-    } 
+
+  calcularTotal() {
+    let total = this.itens.reduce(
+      (acc, item) => acc + item.produto.preco * item.quantidade,
+      0
+    );
+    return total - total * (this.desconto / 100);
+  }
 }
 
-class SistemaPedidos{
-    constructor(){
-        this.clientes = []
-        this.produtos = []
-        this.pedidos = []
-    }
-    castrarCliente(){
-        const nome = document.getElementById("clienteNome").value
-        if(!nome) return alert("Digite um nome para o cliente")
-        const cliente = new Clientes(this.clientes.length+1, nome);
-        this.clientes.push(cliente)
-    }
-    cadastrarProduto(){
-        const nome = document.getElementById("produtoNome").value
-        const preco = parseFloat(document.getElementById("produtoPreco").value)
-        if(!nome || !preco) return alert("Preencha todos os campos do produto");
-        const produto = new Produto(this.produtos.length+1, nome, preco)
-        this.produtos.push(produto);
-    }
-    atualizarClientes(){
-        const lista = document.getElementById("listaClientes")
-        lista.innerHTML = "";
-        const selectCliente =  document.getElementById("selectCliente")
-        selectCliente.innerHTML = '<option value="">Selecione um Cliente</option>'
-        this.clientes.forEach(cliente => {
-            const li = document.createElement("li")
-            li.innerText = cliente.nome;
+class SistemaPedidos {
+  //controller
+  constructor() {
+    this.clientes = [];
+    this.produtos = [];
+    this.pedidos = [];
+  }
+
+  //cadastros
+  cadastrarCliente() {
+    const nome = document.getElementById("clienteNome").value;
+    if (!nome) return alert("Digite um Nome Para o Cliente.");
+    const cliente = new Cliente(this.clientes.length + 1, nome);
+    this.clientes.push(cliente);
+    this.atualizarClientes(); //carrega a atualização no html para cada cadastro de um novo cliente
+    document.getElementById("clienteNome").value = ""; //limpa o input nome do cliente
+  }
+
+  cadastrarProduto() {
+    const nome = document.getElementById("produtoNome").value;
+    const preco = parseFloat(document.getElementById("produtoPreco").value);
+    if (!nome || !preco) return alert("Preencha Todos os Campos do Produto");
+    const produto = new Produto(this.produtos.length + 1, nome, preco);
+    this.produtos.push(produto);
+    this.atualizarProdutos();
+    document.getElementById("produtoNome").value = "";
+  }
+
+  //atualizações
+  atualizarClientes() {
+    const lista = document.getElementById("listaClientes");
+    lista.innerHTML = "";
+
+    const selectClientes = document.getElementById("selectCliente");
+    selectClientes.innerHTML = '<option value="">Selecione um Cliente</option>';
+
+    //percorrer a lista de clientes e preencher os elementos lista e select
+    this.clientes.forEach(cliente => {
+      //adiciono o cliente na lista
+      const li = document.createElement("li");
+      li.innerText = cliente.getNome();
+      lista.appendChild(li);
+
+      //adiciono o cliente na seleção de clientes
+      const option = document.createElement("option");
+      option.value = cliente.id;
+      option.textContent = cliente.getNome();
+      selectClientes.appendChild(option);
+    });
+  }
+  atualizarProdutos(){
+    const lista = document.getElementById("listaProdutos");
+    lista.innerHTML = "";
+    const produtoDiv = document.getElementById("produtosDisponiveis");
+    produtoDiv.innerHTML = "";
+    this.produtos.forEach(produto => {
+        const li = document.createElement("li");
+        li.innerText = `${produto.nome} - R$${produto.preco.toFixed(2)}`;
+        lista.appendChild(li);
+
+        const checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        checkBox.value = produto.id;
+        const label = document.createElement("label");
+        label.innerText = `${produto.nome} - R$${produto.preco.toFixed(2)}`
+        const inputQtdn = document.createElement("input");
+        inputQtdn.type = "number";
+        inputQtdn.value = 1;
+        inputQtdn.min = 1
+        inputQtdn.disabled = true
+        checkBox.addEventListener("change", () => {
+            /*if (checkBox.checked) {
+                inputQtdn.disabled = false;
+            }
+            else{
+                inputQtdn.disabled = true;
+            }*/
+            inputQtdn.disabled = !checkBox.checked;
         })
-    }
+        produtoDiv.appendChild(checkBox);
+        produtoDiv.appendChild(label);
+        produtoDiv.appendChild(inputQtdn);
+        produtoDiv.appendChild(document.createElement("br"));
+    })
+
+  }
+  criarPedido(){
+    const clienteId = parseInt(document.getElementById("selectCliente").value)
+    if (!clienteId) return alert("Selecione um cliente");
+    const cliente = this.clientes.find((c) => c.id === clienteId);
+    const desconto = parseFloat(document.getElementById("desconto").value) || 0;
+    const itens = [];
+    document.querySelectorAll("#produtosDisponiveis input[type='checkbox']").forEach((checkbox, index) => {
+        if(checkbox.checked){
+            const produtoId = parseInt(checkbox.value);
+            const produto = this.produtos.find(p => p.id === produtoId)
+            const quantidade = parseInt(document.querySelectorAll("#produtosDisponiveis input[type='number']")[index].value)
+            itens.push({produto, quantidade})
+        }
+    }) 
+    if(itens.length === 0) return alert("Selecione pelo menos um produto");
+    const pedido = new Pedido(this.pedidos.length+1, cliente, itens, desconto)   
+    this.pedidos.push(pedido);
+    this.atualizarPedidos();
+  }
+  atualizarPedidos(){
+    const lista = document.getElementById("listaPedidos")
+    lista.innerHTML = ""
+    this.pedidos.forEach(pedido => {
+        const li = document.createElement("li")
+        li.innerHTML = `Pedidos ID: ${pedido.id} - Cliente: ${pedido.cliente.getNome()} - Total: R$${pedido.total.toFixed(2)}`
+        lista.appendChild(li)
+    })
+  }
 }
+
+//instaciar um objeto da classe sistemaPedidos
+
+const sistema = new SistemaPedidos();
