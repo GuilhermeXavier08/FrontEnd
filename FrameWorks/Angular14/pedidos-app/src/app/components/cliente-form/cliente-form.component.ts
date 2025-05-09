@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { Cliente } from 'src/app/models/cliente.model';
+import { DadosService } from 'src/app/services/dados.service';
+
+@Component({
+  selector: 'app-cliente-form',
+  templateUrl: './cliente-form.component.html',
+  styles: [
+  ]
+})
+export class ClienteFormComponent {
+  nome = "";
+  constructor(private dadosService: DadosService){
+
+  }
+  addCliente(){
+    const cliente = new Cliente(this.dadosService.getCliente.length+1, this.nome);
+    this.dadosService.adicionarCliente(cliente);
+    this.nome = "";
+  }
+}

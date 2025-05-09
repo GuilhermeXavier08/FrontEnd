@@ -1,0 +1,8 @@
+<h2>Lista de pedidos</h2>
+<div *ngFor="let pedido of pedidos">
+  <p><b>Cliente: </b>{{pedido.cliente.nome}}</p>
+  <!-- <p><b>Produtos: </b>{{pedido.produtos.map(p=>p.nome).join(", ")}}</p> -->
+  <p><b>Desconto: </b>{{pedido.desconto}}%</p>
+  <p><b>Valor total: </b>R${{total(pedido)}}</p>
+  <hr>
+</div>
