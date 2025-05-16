@@ -11,6 +11,6 @@ export class Pedido {
 
   calcularTotal(): number {
     const total = this.produtos.reduce((acc, p) => acc + p.preco, 0);
-    return total - total * (this.desconto / 100);
+    return total - (total * (this.desconto / 100));
   }
 }
