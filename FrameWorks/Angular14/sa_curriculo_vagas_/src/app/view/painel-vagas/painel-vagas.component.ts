@@ -7,68 +7,51 @@ import { VagaService } from 'src/app/service/vaga.service';
   templateUrl: './painel-vagas.component.html',
   styleUrls: ['./painel-vagas.component.scss'],
 })
-export class PainelVagasComponent implements OnInit {
-  public vaga: Vaga = new Vaga(0, '', '', '', 0);
-  //ratrear os dados da API
+export class PainelVagasComponent implements OnInit{
+  public vaga: Vaga = new Vaga(0,"","","",0);
   public vagas: Vaga[] = [];
-  // armazenar as vagas da api
-  constructor(private _vagasService: VagaService) {}
-  // estabelece o serviço da busca no servidor
+  constructor(private _vagasService: VagaService){}
   ngOnInit(): void {
     this.listarVagas();
   }
-  listarVagas() {
-    this._vagasService.getVagas().subscribe((retornaVaga) => {
-      this.vagas = retornaVaga.map((item) => {
-        return new Vaga(
-          item.id,
-          item.nome,
-          item.foto,
-          item.descricao,
-          item.salario
-        );
-      });
-    });
+  listarVagas(){
+    this._vagasService.getVagas().subscribe(
+      (retornoVaga) => {this.vagas = retornoVaga.map(
+        (item)=> Vaga.fromMap(item)
+      )}
+    );
   }
 
-  // lista apenas uma vaga //put
   listarVagaUnica(vaga: Vaga){
-    this.vaga = vaga;
+    this.vaga = vaga
   }
 
   cadastrar(){
     this._vagasService.cadastrarVaga(this.vaga).subscribe(
-      ()=>{
+      () => {
         this.vaga = new Vaga(0,"","","",0);
         this.listarVagas();
       },
-      (err) => {
-        console.error("Erro ao cadastrar", err);
-      }
+      (err) => {console.error("Erro ao cadastrar", err)}
     )
   }
 
-  atualizar(id: number){
-    this._vagasService.atualizarVaga(id,this.vaga).subscribe(
-      ()=>{
-        this.vaga = new Vaga(0,"","","",0);
-        this.listarVagas();
+  atualizar(id:number){
+    this._vagasService.atualizarVaga(id, this.vaga).subscribe(
+      () => {
+        this.vaga = new Vaga(0,"","","",0)
+        this.listarVagas()
       },
-      (err) => {
-        console.error("Erro ao Atualizar", err);
-      }
+      (err) => {console.error("Erro ao atualizar", err);}
     )
   }
 
   excluir(id:number){
     this._vagasService.removerVaga(id).subscribe(
       () => {
-        this.vaga = new Vaga(0, '', '', '', 0);
         this.listarVagas();
       },
-      (err) => {
-        console.error('Erro ao Excluir', err);
-      }
-    );
+      (err) => {console.error("Erro ao deletar", err);}
+    )
   }
 }

@@ -7,8 +7,7 @@ import { Vaga } from '../models/vaga.model';
   providedIn: 'root'
 })
 export class VagaService {
-  private apiUrl = "http://localhost:3013/vagas"
-  apiUrlVaga = "http://localhost:3013/vagas/1"
+  private apiUrl = "http://localhost:3013/vagas";
 
   constructor(private http: HttpClient) {}
 
