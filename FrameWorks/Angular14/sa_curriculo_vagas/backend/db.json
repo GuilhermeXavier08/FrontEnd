@@ -1,0 +1,76 @@
+{
+  "vagas": [
+    {
+      "id": "1",
+      "nome": "Desenvolver FrontEnd Jr",
+      "foto": "foto1.png",
+      "descricao": "Trabalhar com HTML, CSS e JS",
+      "salario": "3000"
+    },
+    {
+      "id": "2",
+      "nome": "Desenvolver BackEnd Pleno",
+      "foto": "foto2.png",
+      "descricao": "Trabalhar com Desenvolvimento Web",
+      "salario": 7000
+    },
+    {
+      "id": "3",
+      "nome": "Desenvolver Fullstack Senior",
+      "foto": "foto3.png",
+      "descricao": "Trabalhar com Desenvolvimento Web",
+      "salario": 10000
+    },
+    {
+      "id": "4",
+      "nome": "Gerente de Nuvem",
+      "foto": "foto4.png",
+      "descricao": "Vaga de Gerente de Nuvem",
+      "salario": 8500
+    },
+    {
+      "id": "5",
+      "nome": "Criar Páginas Web",
+      "foto": "foto5.png",
+      "descricao": "Trabalhar com Angular",
+      "salario": "4000"
+    }
+  ],
+  "curriculos": [
+    {
+      "id": "1",
+      "nome": "Pedro",
+      "idade": "20",
+      "formacao": "Gerente de Nuvem",
+      "foto": "foto6.png"
+    },
+    {
+      "id": "2",
+      "nome": "Jaime",
+      "idade": "37",
+      "formacao": "Desenvolvedor Fullstack Senior",
+      "foto": "foto7.png"
+    },
+    {
+      "id": "3",
+      "nome": "Paulo",
+      "idade": "29",
+      "formacao": "Desenvolvedor BackEnd Pleno",
+      "foto": "foto8.png"
+    },
+    {
+      "id": "4",
+      "nome": "Fátima",
+      "idade": "25",
+      "formacao": "Desenvolverdor Web",
+      "foto": "foto9.png"
+    },
+    {
+      "id": "5",
+      "nome": "Márcia",
+      "idade": "35",
+      "formacao": "Desenvolver Fullstack Senior",
+      "foto": "foto10.png"
+    }
+  ]
+}
