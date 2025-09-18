@@ -1,5 +1,5 @@
 {
-  "name": "to-do-list-app",
+  "name": "to-do-list-mongo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "mongoose": "^8.18.0",
-    "next": "15.5.2",
+    "mongoose": "^8.18.1",
+    "mongose": "^0.0.2-security",
+    "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -20,7 +21,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.2",
+    "eslint-config-next": "15.5.3",
     "typescript": "^5"
   }
 }
