@@ -41,16 +41,15 @@ O projeto consiste no desenvolvimento de um Sistema de Gestão de Manutenção (
 1. ### Classe
 Descrever o Compotamento das Entidades de um Projeto
 
-    - Usuário (User/Usuario)
-        -Atributos: id, nome, email, senha, função
-        -Métodos: create, read, update, delete, login, logout
+- Usuário (User/Usuario)
+    -Atributos: id, nome, email, senha, função
+    -Métodos: create, read, update, delete, login, logout
+- Equipamento (Equipment/Equipamento)
+    -Atributos: id, modelo, marca, localização, status, numeroSerie
+    -Métodos: CRUD
 
-    - Equipamento (Equipment/Equipamento)
-        -Atributos: id, modelo, marca, localização, status, numeroSerie
-        -Métodos: CRUD
-    
-    - Ordem de Serviço (OrdemServico)
-        -Atributos: id, titulo, descricao, tipoManuntenção, status, idTecnico, idEquipamento
+- Ordem de Serviço (OrdemServico)
+    -Atributos: id, titulo, descricao, tipoManuntenção, status, idTecnico, idEquipamento
 
 ```mermaid
 
@@ -95,6 +94,48 @@ classDiagram
     
 
 2. ### 
+Ilustra as interaçãoes dos diferentes tipos de usuário (Atores) com as funcionalidade do Sistema
 
+- Caso de Uso:
+    - Técnico: Gerenciar Ordens de Serviço (CRUD) e acessar o Dashboard;
+    - Gerente: Funções do técnico + Gerenciamento de Equipamentos (CRUD)
+    - Admin: Gerenciar Usuários do Sistema, acessar o Dashboard
+
+    Fazer o login -> Antes de Qualquer Ação
+```mermaid
+
+graph TD
+
+    subgraph "SGM"
+        caso1([Fazer Login])
+        caso2([Gerenciar Orden de Serviço - CRUD])
+        caso3([Gerenciar Equipamentos - CRUD])
+        caso4([Gerenciar Usuários])
+        caso5([Acessar o DashBoard])
+    end
+
+    Tecnico([Técnico de Manutenção])
+    Gerente([Gerente de Manutenção])
+    Admin([Administrador do Sistema])
+
+    Tecnico --> caso1
+    Tecnico --> caso3
+    Tecnico --> caso5
+
+    Gerente --> caso1
+    Gerente --> caso2
+    Gerente --> caso3
+    Gerente --> caso5
+
+    Admin --> caso1
+    Admin --> caso4
+    Admin --> caso5
+
+    caso1 -.-> caso2
+    caso1 -.-> caso3
+    caso1 -.-> caso4
+    caso1 -.-> caso5
+
+```
 
 3. ###
