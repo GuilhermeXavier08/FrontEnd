@@ -93,7 +93,7 @@ classDiagram
 ```
     
 
-2. ### 
+2. ### Casos de Uso
 Ilustra as interaçãoes dos diferentes tipos de usuário (Atores) com as funcionalidade do Sistema
 
 - Caso de Uso:
@@ -138,4 +138,24 @@ graph TD
 
 ```
 
-3. ###
+3. ### Fluxo
+Detalha o passo a passo para realizar uma ação no sistema
+
+- Diagrama de fluxo de login
+    - O usuário acessa a tela de login
+    - Insere as credenciais
+    - O sistema verifica as credenciais
+        - se sim: gera um JWT (Token) => DashBoard
+        - se não: manda uma mensagem de erro - permanece na tela de Login
+```mermaid
+
+graph TD
+    A[Início] --> B[Acessa a Tela de Login]
+    B --> C[Preencher Email e Senha]
+    C --> D[Validade as Credenciais]
+    D --> SIM --> E[Gerar um Token JWT]
+    E --> F[Dashboard]
+    D --> NÃO --> G[Mensagem de Erro]
+    G --> B
+
+```
