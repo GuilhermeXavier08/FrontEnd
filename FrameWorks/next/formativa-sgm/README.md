@@ -56,7 +56,7 @@ Descrever o Compotamento das Entidades de um Projeto
 
 classDiagram
 
-    class User{
+    class Usuario{
         +String id
         +String nome
         +String email 
