@@ -16,7 +16,7 @@ const EquipSchema:Schema<IEquip> = new Schema({
     marca: {type: String, required: true},
     localizacao: {type: String, required: true},
     numSerie: {type: String, required: true, unique: true},
-    status: {type: String, enum: ["ativo", "inativo"], default: "ativo"}
+    status: {type: String, enum: ["ativo", "inativo", "manutencao"], default: "ativo"}
 })
 
 const Equipamento: Model<IEquip> = mongoose.models.Equipamento
