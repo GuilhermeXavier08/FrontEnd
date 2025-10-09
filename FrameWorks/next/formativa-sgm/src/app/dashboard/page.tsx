@@ -1,37 +1,45 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
-import LogoutButton from "../componentes/LogoutButton";
+"use client"
+
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react";
 import DashboardTecnico from "../componentes/dashboards/DashboardTecnico";
 import DashboardGerente from "../componentes/dashboards/DashboardGerente";
 import DashboardAdmin from "../componentes/dashboards/DashboardAdmin";
 
-export default async function DashboardPage() {
-    const session = await getServerSession(authOptions)
-    if (!session) {
-        redirect("/login")
+export default function DashboardPage() {
+    const route = useRouter();
+    const [funcao, setFuncao] = useState<string | null>(null);
+
+    useEffect(() => {
+        const funcao = localStorage.getItem("funcao")
+        if (!funcao) {
+            route.push("/login")
+        } else {
+            setFuncao(funcao)
+        }
+    })
+
+    //metodo de logout
+    const handleLogout = async () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("funcao");
+        route.push("/login")
     }
 
-    const renderDashboard = () =>{
-        switch (session.user?.role) {
-            case "admin":
-                return <DashboardAdmin/>
-                break;
-            case "gerente":
-                return <DashboardGerente/>
-                break
-            case "tecnico":
-                return <DashboardTecnico/>
-            default:
-                <p>Tipo de Usuário desconhecido, Contate o Administrador</p>
-                break;
+    const renderDashboard = () => {
+        if (funcao?.toLowerCase() === "admin") {
+            return <DashboardAdmin />
+        } else if (funcao?.toLowerCase() === "gerente") {
+            return <DashboardGerente />
+        } else if (funcao?.toLowerCase() === "tecnico") {
+            return <DashboardTecnico />
         }
     }
-    return(
+    return (
         <div>
             <header>
-                <h1>Bem-Vindo, {session.user?.name}</h1>
-                <LogoutButton />
+                <h1>Bem-Vindo</h1>
+                <button onClick={handleLogout}>Logout</button>
             </header>
             <main>
                 {renderDashboard()}
@@ -39,3 +47,4 @@ export default async function DashboardPage() {
         </div>
     )
 }
+

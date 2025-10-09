@@ -159,3 +159,8 @@ graph TD
     G --> B
 
 ```
+
+## Protótipos
+https://www.figma.com/design/ZsVuuUBOUR5VwH90vBOCi4/Untitled?node-id=0-1&t=J471MjGQKJFQt9n8-1
+
+## Codificação

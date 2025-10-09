@@ -1,7 +1,7 @@
 import { createUsuario, getAllUsuario } from "@/controllers/UsuarioController";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
+
 
 //rotas que nao precisa passar o id(get, post)
 export async function GET() {

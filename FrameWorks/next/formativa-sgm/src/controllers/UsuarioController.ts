@@ -1,10 +1,13 @@
 import Usuario, { IUsuario } from "@/models/Usuario";
+import { criarAdmin } from "@/scripts/initUsuario";
 import connectMongo from "@/services/mongodb"
 
 //getall
 export const getAllUsuario = async() =>{
     await connectMongo() //estabelece conexao com o bd
     const usuarios = await Usuario.find([]) //lista todos os usuarios da colecao
+    console.log(usuarios);
+    
     return usuarios
 }
 
@@ -39,6 +42,7 @@ export const deleteUsuario = async(id:string) =>{
 // metodo para a autenticacao do usuario (login) a senha e comparada
 export const autenticaUsuario = async(email:string, senha:string) =>{
     await connectMongo()
+    // await criarAdmin()
     //buscar o usuario (email)
     const usuario = await Usuario.find({email}).select("+senha")
     //se o usuario nao encontrado

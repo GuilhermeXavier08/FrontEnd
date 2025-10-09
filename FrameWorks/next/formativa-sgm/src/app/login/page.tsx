@@ -1,6 +1,6 @@
-"use-client";
-import { signIn } from "next-auth/react";
-import router, { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
  //interface do usuario
@@ -10,21 +10,35 @@ export default function LoginPage(){
     const [senha, setSenha] = useState("")
     const [error, setError] = useState("")
 
-    const route = useRouter()
+    const route = useRouter() //rotas de navegação em SPA
 
+    //acao quando enviar o formulario
     const handleSubmit = async(e: React.FormEvent) => {
-        e.preventDefault()
-        setError("")
+        e.preventDefault() //evita o comportamento padrao do html
+        setError("") //limpa a mensagem de erro
 
-        const result = await signIn("credentials", {
-            redirect: false,
-            email,
-            senha
-        })
-        if (result?.ok) {
-            router.push("/dashboard")
-        }else{
-            setError("Email ou senha inválidos")
+        try {
+            const response = await fetch(
+                "/api/usuarios/login",
+                {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({email, senha})
+                }
+            );
+            const data = await response.json();
+            if (data.success) {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("funcao", data.usuario.funcao);
+                route.push("/dashboard");
+            }
+            else{
+                const errorData = data.error
+                setError(errorData || "Falha ao fazer login")
+            }
+        } catch (error) {
+            console.error("Erro ao fazer login:", error);
+            setError("Erro de Servidor: "+error)
         }
     }
     return (
